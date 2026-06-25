@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Administrar - Patogenos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body class="page-admin">
+
+    <!-- Navbar fijo -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="/">Patogenos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto gap-1">
+            <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="/search.html">Buscador</a></li>
+            <li class="nav-item"><a class="nav-link" href="/admin.html">Admin</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+
+          <!-- Formulario de login -->
+          <div class="admin-card" id="login-card">
+            <h2>Ingreso Administrador</h2>
+            <div id="login-error" class="alert alert-danger d-none" role="alert">
+              Credenciales inválidas. Inténtalo nuevamente.
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold text-secondary small text-uppercase">Usuario</label>
+              <input class="form-control" id="user" placeholder="Usuario" autocomplete="username">
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold text-secondary small text-uppercase">Contraseña</label>
+              <input type="password" class="form-control" id="pass" placeholder="Clave" autocomplete="current-password">
+            </div>
+            <button class="btn btn-cerulean w-100" id="btn-login" type="button">Entrar</button>
+          </div>
+
+          <!-- Panel de administración (oculto hasta login) -->
+          <div id="admin-panel" style="display:none">
+
+            <!-- Formulario agregar / editar -->
+            <div class="admin-card">
+              <h2 id="form-title">Agregar patógeno</h2>
+              <input type="hidden" id="p-id">
+              <div class="mb-3">
+                <label class="form-label fw-semibold text-secondary small text-uppercase">Nombre</label>
+                <input id="p-nombre" class="form-control" placeholder="Nombre del patógeno">
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-12">
+                  <label class="form-label fw-semibold text-secondary small text-uppercase">Resumen (público)</label>
+                  <textarea id="p-resumen" class="form-control" rows="3" placeholder="Descripción para el público general"></textarea>
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold text-secondary small text-uppercase">Tratamiento (público)</label>
+                  <textarea id="p-tratamiento" class="form-control" rows="3" placeholder="Tratamiento para el público general"></textarea>
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold text-secondary small text-uppercase">Resumen (experto)</label>
+                  <textarea id="p-resumen-exp" class="form-control" rows="3" placeholder="Descripción técnica para expertos"></textarea>
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold text-secondary small text-uppercase">Tratamiento (experto)</label>
+                  <textarea id="p-tratamiento-exp" class="form-control" rows="3" placeholder="Protocolo de tratamiento para expertos"></textarea>
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold text-secondary small text-uppercase">Fuente (URL)</label>
+                  <input id="p-fuente" class="form-control" placeholder="https://…" type="url">
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-cerulean" id="btn-save" type="button">Guardar</button>
+                <button class="btn btn-outline-secondary" id="btn-cancel" type="button">Cancelar</button>
+              </div>
+            </div>
+
+            <!-- Tabla de patógenos -->
+            <div class="admin-card">
+              <h2>Patógenos registrados</h2>
+              <div id="tabla-local"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
